@@ -12,18 +12,17 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class OrganizationDetailsComponent {
 
-
   @Input() filterContent = [];
   @Input() searchKey = '';
   @Input() addContent = '';
-
 
   orgList: any[] = [];
   currentPage: number = 0;
   faCaretLeft = faCaretLeft;
   faCaretRight = faCaretRight;
   pageNumber: number = 0;
-
+  minPage = true;
+  maxPage = false;
 
   updateForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
@@ -38,6 +37,8 @@ export class OrganizationDetailsComponent {
     phone: ['', [Validators.required, Validators.pattern('^0[0-9]{9}$')]],
     status: ['', [Validators.required]],
   });
+
+  
 
   get form() {
     return this.updateForm.controls;
@@ -131,16 +132,20 @@ export class OrganizationDetailsComponent {
 
   prevPage() {
     this.currentPage -= 1;
+    this.maxPage = false;
     if (this.currentPage <= 0) {
       this.currentPage = 0;
+      this.minPage = true;
     }
     this.ngOnInit();
   }
 
   nextPage() {
     this.currentPage += 1;
+    this.minPage = false;
     if (this.currentPage >= this.pageNumber-1) {
       this.currentPage = this.pageNumber-1;
+      this.maxPage = true;
     }
     this.ngOnInit();
   }

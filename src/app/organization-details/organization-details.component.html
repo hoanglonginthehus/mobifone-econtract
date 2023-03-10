@@ -1,9 +1,9 @@
 <div id="page-nav">
-    <button class="btn" (click)="prevPage()">
+    <button class="btn" (click)="prevPage()" [disabled]="minPage">
         <fa-icon [icon]="faCaretLeft"></fa-icon>
     </button>
-    <span>{{currentPage}}</span>
-    <button class="btn" (click)="nextPage()">
+    <span>{{currentPage+1}}</span>
+    <button class="btn" (click)="nextPage()" [disabled]="maxPage">
         <fa-icon [icon]="faCaretRight"></fa-icon>
     </button>
 </div>
