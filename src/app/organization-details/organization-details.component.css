@@ -1,0 +1,101 @@
+#page-nav {
+    text-align: right;
+}
+
+#page-nav > * {
+    color: #106DB6;
+}
+
+#page
+
+#main-content {
+    margin: 15px 0px;
+}
+
+.not-active {
+    color: #106DB6;
+    text-decoration: underline;
+}
+
+.row-content {
+    padding: 10px;
+}
+
+.row.head {
+    background-color: #E2ECF7;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.row.head * {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #106DB6;
+}
+
+.row.body:nth-child(odd) {
+    background-color: #EFF2F5;
+}
+
+.modal-header {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #106DB6;
+    justify-content: center;
+    border-bottom: 1px solid #87CAFF;
+}
+
+.modal-body .row {
+    padding: 0.75rem;
+}
+
+.modal-body label {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #666666;
+}
+
+.modal-body input {
+    border-color: #87CAFF;
+}
+
+.status-row .form-check {
+    width: auto;
+}
+
+.modal-footer {
+    justify-content: center;
+}
+
+.modal-footer button {
+    padding: 6px 32px;
+    color: white;
+}
+
+.modal-footer .btn-dismiss {
+    background-color: rgba(139, 139, 139, 1);
+}
+
+.modal-footer .btn-save {
+    background-color: rgba(16, 109, 182, 1);
+}
+
+.form-group small {
+    color: red;
+}
+
+#main-content span img {
+    cursor: pointer;
+}
+
+.form-label span {
+    color: red;
+}

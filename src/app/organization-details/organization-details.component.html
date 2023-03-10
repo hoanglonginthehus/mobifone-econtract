@@ -1,0 +1,148 @@
+<div id="page-nav">
+    <button class="btn" (click)="prevPage()">
+        <fa-icon [icon]="faCaretLeft"></fa-icon>
+    </button>
+    <span>{{currentPage}}</span>
+    <button class="btn" (click)="nextPage()">
+        <fa-icon [icon]="faCaretRight"></fa-icon>
+    </button>
+</div>
+<div id="main-content" class="container">
+    <div class="row head row-content">
+        <div class="col-3">Tên tổ chức</div>
+        <div class="col-2">Mã tổ chức</div>
+        <div class="col-2">Số điện thoại</div>
+        <div class="col-2">Kích hoạt</div>
+        <div class="col-3">Email đăng kí</div>
+    </div>
+    <div *ngFor="let item of orgList" class="row body row-content">
+        <div class="col-3">{{item.name}}</div>
+        <div class="col-2">{{item.code}}</div>
+        <div class="col-2">{{item.phone}}</div>
+        <div class="col-2">
+            <div *ngIf="item.status === 'ACTIVE'; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <span>Đã kích hoạt</span>
+            </ng-template>
+            <ng-template #elseBlock>
+                <span class="not-active">Chưa kích hoạt</span>
+            </ng-template>
+        </div>
+        <div class="col-3 row">
+            <div class="col-6" style="word-wrap: break-word;">{{item.email}}</div>
+            <div class="col-6 row">
+                <span class="col-4" (click)="openUpdateModal(update, item.id)"><img src="../../assets/svg/update.svg"
+                        alt="no-image"></span>
+                <span class="col-4" (click)="openDeleteModal(del, item.id)"><img src="../../assets/svg/delete.svg"
+                        alt="no-image"></span>
+                <span class="col-4"><img src="../../assets/svg/info.svg" alt="no-image"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #update let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">SỬA THÔNG TIN TỔ CHỨC</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form [formGroup]="updateForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="update-name" class="form-label">Tên tổ chức <span>*</span></label>
+                        <input type="text" placeholder="Nhập họ tên" class="form-control" formControlName="name">
+                        <small *ngIf="form['name'].errors">Tên không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="update-code" class="form-label">Mã tổ chức</label>
+                        <input type="text" placeholder="Nhập mã tổ chức" class="form-control disabled"
+                            formControlName="code" readonly>
+                        <small *ngIf="form['code'].errors">Mã tổ chức phải đúng định dạng</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="update-taxCode" class="form-label">Mã số thuế <span>*</span></label>
+                        <input type="text" placeholder="Nhập mã số thuế" class="form-control" formControlName="taxCode">
+                        <small *ngIf="form['taxCode'].errors">Mã số thuế không được để trống và đúng định dạng</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="update-shortName" class="form-label">Tên viết tắt</label>
+                        <input type="text" placeholder="Nhập tên viết tắt" class="form-control"
+                            formControlName="shortName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="update-address" class="form-label">Địa chỉ <span>*</span></label>
+                        <input type="text" placeholder="Nhập địa chỉ" class="form-control" formControlName="address">
+                        <small *ngIf="form['address'].errors">Địa chỉ không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="update-email" class="form-label">Email đăng ký <span>*</span></label>
+                        <input type="text" placeholder="Nhập email đăng kí" class="form-control"
+                            formControlName="email">
+                        <small *ngIf="form['email'].errors">Email không được để trống và đúng định dạng</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="update-representative" class="form-label">Người đại diện <span>*</span></label>
+                        <input type="text" placeholder="Nhập người đại diện" class="form-control"
+                            formControlName="representative">
+                        <small *ngIf="form['representative'].errors">Không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="update-position" class="form-label">Chức vụ <span>*</span></label>
+                        <input type="text" placeholder="Nhập chức vụ" class="form-control" formControlName="position">
+                        <small *ngIf="form['position'].errors">Không được để trống</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="update-size" class="form-label">Quy mô <span>*</span></label>
+                        <input type="text" placeholder="Nhập quy mô" class="form-control" formControlName="size">
+                        <small *ngIf="form['size'].errors">Không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="update-phone" class="form-label">Số điện thoại <span>*</span></label>
+                        <input type="text" placeholder="Nhập số điện thoại" class="form-control"
+                            formControlName="phone">
+                        <small *ngIf="form['phone'].errors">SĐT không được để trống</small>
+                    </div>
+                </div>
+                <div class="row status-row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status-active" value="ACTIVE"
+                            formControlName="status">
+                        <label class="form-check-label" for="status-active">
+                            Hoạt động
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status-not-active"
+                            value="IN_ACTIVE" formControlName="status">
+                        <label class="form-check-label" for="status-not-active">
+                            Không hoạt động
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+        <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+    </div>
+</ng-template>
+
+<ng-template #del let-modal>
+    <div class="modal-header">
+        Bạn muốn xóa dữ liệu này không?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dismiss" id="modal-btn-no" (click)="modal.close('dismiss')">No</button>
+        <button type="button" class="btn btn-save" id="modal-btn-yes" (click)="modal.close('confirm')">Yes</button>
+    </div>
+</ng-template>

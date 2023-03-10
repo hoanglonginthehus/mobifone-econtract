@@ -1,0 +1,168 @@
+<div id="search-box" class="input-group">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+            <img src="../../assets/svg/search.svg" alt="no-image">
+        </button>
+    </span>
+
+    <span class="form-control">
+        <input name="search-box" type="text" [(ngModel)]="searchKey"
+            placeholder="Nhập từ khóa tìm kiếm theo tên tổ chức và mã tổ chức">
+    </span>
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="openFilterModal(filter)">
+            <div id="filter-icon">
+                <img src="../../assets/svg/filter.svg" alt="no-image">
+            </div>
+        </button>
+    </span>
+
+</div>
+
+<button id="add-button" class="btn btn-primary" (click)="openAddModal(add)">Thêm mới tổ chức</button>
+
+<app-organization-details [filterContent]="filterContent" [searchKey]="searchKey"
+    [addContent]="addContent"></app-organization-details>
+
+<ng-template #add let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">THÊM THÔNG TIN TỔ CHỨC</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form [formGroup]="addForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="add-name" class="form-label">Tên tổ chức: <span>*</span></label>
+                        <input type="text" placeholder="Nhập họ tên" class="form-control" formControlName="name">
+                        <small *ngIf="form['name'].errors">Tên không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="add-code" class="form-label">Mã tổ chức</label>
+                        <input type="text" placeholder="Nhập mã tổ chức" class="form-control" formControlName="code">
+                        <small *ngIf="form['code'].errors">Mã tổ chức phải đúng định dạng</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="add-taxCode" class="form-label">Mã số thuế <span>*</span></label>
+                        <input type="text" placeholder="Nhập mã số thuế" class="form-control" formControlName="taxCode">
+                        <small *ngIf="form['taxCode'].errors">Mã số thuế không được để trống và đúng định dạng</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="add-shortName" class="form-label">Tên viết tắt</label>
+                        <input type="text" placeholder="Nhập tên viết tắt" class="form-control"
+                            formControlName="shortName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="add-address" class="form-label">Địa chỉ <span>*</span></label>
+                        <input type="text" placeholder="Nhập địa chỉ" class="form-control" formControlName="address">
+                        <small *ngIf="form['address'].errors">Địa chỉ không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="add-email" class="form-label">Email đăng ký <span>*</span></label>
+                        <input type="text" placeholder="Nhập email đăng kí" class="form-control"
+                            formControlName="email">
+                        <small *ngIf="form['email'].errors">Email không được để trống và đúng định dạng</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="add-representative" class="form-label">Người đại diện <span>*</span></label>
+                        <input type="text" placeholder="Nhập người đại diện" class="form-control"
+                            formControlName="representative">
+                        <small *ngIf="form['representative'].errors">Không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="add-position" class="form-label">Chức vụ <span>*</span></label>
+                        <input type="text" placeholder="Nhập chức vụ" class="form-control" formControlName="position">
+                        <small *ngIf="form['position'].errors">Không được để trống</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="add-size" class="form-label">Quy mô <span>*</span></label>
+                        <input type="text" placeholder="Nhập quy mô" class="form-control" formControlName="size">
+                        <small *ngIf="form['size'].errors">Không được để trống</small>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="add-phone" class="form-label">Số điện thoại <span>*</span></label>
+                        <input type="text" placeholder="Nhập số điện thoại" class="form-control"
+                            formControlName="phone">
+                        <small *ngIf="form['phone'].errors">SĐT không được để trống</small>
+                    </div>
+                </div>
+                <div class="row status-row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status-active" value="ACTIVE"
+                            formControlName="status">
+                        <label class="form-check-label" for="status-active">
+                            Hoạt động
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status-not-active" checked
+                            value="IN_ACTIVE" formControlName="status">
+                        <label class="form-check-label" for="status-not-active">
+                            Không hoạt động
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+        <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+    </div>
+</ng-template>
+
+<ng-template #filter let-modal>
+    <div class="modal-header">
+        Tìm kiếm tổ chức
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form [formGroup]="searchForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="search-name" class="form-label">Người đại diện</label>
+                        <input type="text" placeholder="Nhập người đại diện" class="form-control"
+                            formControlName="representative">
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="search-code" class="form-label">Email</label>
+                        <input type="text" placeholder="Nhập email" class="form-control" formControlName="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="search-taxCode" class="form-label">Số điện thoại</label>
+                        <input type="text" placeholder="Nhập số điện thoại" class="form-control"
+                            formControlName="phone">
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="search-shortName" class="form-label">Trạng thái</label>
+                        <select id="search-status" class="form-control">
+                            <option value="" selected="selected">Tất cả</option>
+                            <option value="ACTIVE">Hoạt động</option>
+                            <option value="IN_ACTIVE">Không hoạt động</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="search-address" class="form-label">Địa chỉ</label>
+                        <input type="text" placeholder="Nhập địa chỉ" class="form-control" formControlName="address">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dismiss" id="modal-btn-no" (click)="modal.close('dismiss')">Hủy</button>
+        <button type="button" class="btn btn-save" id="modal-btn-yes" (click)="modal.close('confirm')">Tìm kiếm</button>
+    </div>
+</ng-template>

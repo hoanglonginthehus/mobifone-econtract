@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand large">
+    <div class="left">
+        <a href="/main" class="navbar-brand">
+            <img class="logo" src="../../assets/svg/logo_eContract_21.svg" alt="no-logo" height="62px">
+        </a>
+        <h1 class="main-title">Danh sách tổ chức</h1>
+    </div>
+    <div class="right">
+        <div class="notification">
+            <fa-icon [icon]="faBell"></fa-icon>
+            <span>THÔNG BÁO</span>
+        </div>
+        <div class="account">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn" ngbDropdownToggle>
+                    <fa-icon [icon]="faUser"></fa-icon>
+                    <span>{{accountName}}</span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem (click)="logOut()">
+                        <fa-icon [icon]="faLogOut"></fa-icon>
+                        Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>

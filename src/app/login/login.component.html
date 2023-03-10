@@ -1,0 +1,54 @@
+<div class="main">
+    <div class="left-background"></div>
+    <div class="right-panel">
+        <div class="language_dropdown">
+            <div class="dropdown_toggle">
+                <span class="icon"></span>
+                <div class="label">VI</div>
+            </div>
+        </div>
+        <div>
+            <header>
+                <div>
+                    <img id="banner" src="../../assets/svg/logo_eContract_21.svg" alt="no-img">
+                </div>
+            </header>
+            <main>
+                <form [formGroup]="form" class="form-login">
+                    <div class="form-group">
+                        <div class="input-line">
+                            <img class="input-img" src="https://econtract.mobifone.vn/assets/img/login_user.svg"
+                                alt="username">
+                            <input type="text" id="username" class="input-text" formControlName="email"
+                                placeholder="Tên đăng nhập">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-line">
+                            <img class="input-img" src="https://econtract.mobifone.vn/assets/img/login_password.svg"
+                                alt="password">
+                            <input type="password" id="password" class="input-text" formControlName="password"
+                                placeholder="Mật khẩu">
+                            <div class="icon-password">
+                                <i class="fa fa-solid fa-eye-slash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group forgot-password">
+                        <a href="">Quên mật khẩu?</a>
+                    </div>
+                    <div class="form-group sub-login">
+                        <button (click)="onSubmit()">Đăng nhập</button>
+                    </div>
+                    <div class="form-group sign-up">
+                        <b>Bạn chưa có tài khoản? </b>
+                        <a href="">Đăng kí</a>
+                    </div>
+                </form>
+            </main>
+            <footer>
+                <div class="slogan"></div>
+            </footer>
+        </div>
+    </div>
+</div>

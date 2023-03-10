@@ -1,0 +1,42 @@
+* {
+    background: #f9fdff;
+}
+
+h1 {
+    margin: 0;
+    color: #106db6;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+}
+
+nav.navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #87CAFF;
+}
+
+.navbar > * {
+    display: flex;
+    align-items: center;
+}
+
+.right * {
+    padding: 10px;
+}
+
+.right * * {
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #106DB6;
+    padding: 5px;
+}
+
+.right .account:hover {
+    cursor: pointer;
+}

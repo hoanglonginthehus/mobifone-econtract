@@ -1,0 +1,11 @@
+<div *ngIf="authService.isLoggedIn$ | async">
+    <app-header></app-header>
+    <div class="container-fluid">
+        <div class="row">
+            <app-nav-side-bar class="col-2"></app-nav-side-bar>
+            <div class="col-10">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

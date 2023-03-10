@@ -1,0 +1,8 @@
+<ul class="container-fluid">
+    <li *ngFor="let item of listNav" class="row">
+        <a routerLink="{{item.path}}">
+            <fa-icon [icon]="item.icon" class="col-2"></fa-icon>
+            <span class="title col-10">{{item.name}}</span>
+        </a>
+    </li>
+</ul>
